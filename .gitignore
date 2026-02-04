@@ -36,7 +36,6 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-.python-version
 cognee-mcp/.python-version
 MANIFEST
 
