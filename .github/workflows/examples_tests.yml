@@ -16,8 +16,6 @@ jobs:
 
       - name: Cognee Setup
         uses: ./.github/actions/cognee_setup
-        with:
-          python-version: '3.11.x'
 
       - name: Run Multimedia Example
         env:
@@ -36,7 +34,6 @@ jobs:
       - name: Cognee Setup
         uses: ./.github/actions/cognee_setup
         with:
-          python-version: '3.11.x'
           extra-dependencies: "deepeval"
 
       - name: Run Evaluation Framework Example
@@ -62,8 +59,6 @@ jobs:
 
       - name: Cognee Setup
         uses: ./.github/actions/cognee_setup
-        with:
-          python-version: '3.11.x'
 
       - name: Setup Neo4j with GDS
         uses: ./.github/actions/setup_neo4j
@@ -98,8 +93,6 @@ jobs:
 
       - name: Cognee Setup
         uses: ./.github/actions/cognee_setup
-        with:
-          python-version: '3.11.x'
 
       - name: Run Dynamic Steps Tests
         env:
@@ -124,8 +117,6 @@ jobs:
 
       - name: Cognee Setup
         uses: ./.github/actions/cognee_setup
-        with:
-          python-version: '3.11.x'
 
       - name: Run Temporal Example
         env:
@@ -150,8 +141,6 @@ jobs:
 
       - name: Cognee Setup
         uses: ./.github/actions/cognee_setup
-        with:
-          python-version: '3.11.x'
 
       - name: Run Ontology Demo Example
         env:
@@ -176,8 +165,6 @@ jobs:
 
       - name: Cognee Setup
         uses: ./.github/actions/cognee_setup
-        with:
-          python-version: '3.11.x'
 
       - name: Run Agentic Reasoning Example
         env:
@@ -202,8 +189,6 @@ jobs:
 
       - name: Cognee Setup
         uses: ./.github/actions/cognee_setup
-        with:
-          python-version: '3.11.x'
 
       - name: Run Memify Tests
         env:
@@ -228,8 +213,6 @@ jobs:
 
       - name: Cognee Setup
         uses: ./.github/actions/cognee_setup
-        with:
-          python-version: '3.11.x'
 
       - name: Run Custom Pipeline Example
         env:
@@ -254,8 +237,6 @@ jobs:
 
       - name: Cognee Setup
         uses: ./.github/actions/cognee_setup
-        with:
-          python-version: '3.11.x'
 
       - name: Run Memify Tests
         env:
@@ -280,7 +261,6 @@ jobs:
       - name: Cognee Setup
         uses: ./.github/actions/cognee_setup
         with:
-          python-version: '3.11.x'
           extra-dependencies: 'docling'
 
       - name: Run Docling Test

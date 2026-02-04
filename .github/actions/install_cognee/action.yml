@@ -5,7 +5,6 @@ inputs:
   python-version:
     description: "Which Python version to use"
     required: false
-    default: "3.11.x"
   cognee_version:
     description: "Pypi-compatible version of cognee to use. For example, 0.5.2.dev0. `local` (default) - Installing Cognee from local source"
     required: false
@@ -19,6 +18,7 @@ runs:
       uses: actions/setup-python@v5
       with:
         python-version: ${{ inputs.python-version }}
+        python-version-file: .python-version
 
     - name: Install uv
       uses: astral-sh/setup-uv@v4

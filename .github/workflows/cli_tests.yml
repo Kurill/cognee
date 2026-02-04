@@ -3,10 +3,6 @@ name: test | cli
 on:
   workflow_call:
     inputs:
-      python-version:
-        required: false
-        type: string
-        default: '3.11.x'
       cognee_version:
         required: false
         type: string
@@ -62,8 +58,6 @@ jobs:
 
       - name: Cognee Setup
         uses: ./.github/actions/cognee_setup
-        with:
-          python-version: ${{ inputs.python-version }}
 
       - name: Run CLI Unit Tests
         run: uv run pytest cognee/tests/cli_tests/cli_unit_tests/ -v
@@ -90,13 +84,10 @@ jobs:
 
       - name: Cognee Setup
         uses: ./.github/actions/cognee_setup
-        with:
-          python-version: ${{ inputs.python-version }}
 
       - name: Install Cognee
         uses: ./.github/actions/install_cognee
         with:
-          python-version: ${{ inputs.python-version }}
           cognee_version: ${{ inputs.cognee_version }}
 
       - name: Run CLI Integration Tests
@@ -124,13 +115,10 @@ jobs:
 
       - name: Cognee Setup
         uses: ./.github/actions/cognee_setup
-        with:
-          python-version: ${{ inputs.python-version }}
 
       - name: Install Cognee
         uses: ./.github/actions/install_cognee
         with:
-          python-version: ${{ inputs.python-version }}
           cognee_version: ${{ inputs.cognee_version }}
 
       - name: Test CLI Help Commands
