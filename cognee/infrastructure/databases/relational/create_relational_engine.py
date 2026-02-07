@@ -1,9 +1,9 @@
 from sqlalchemy import URL
 from .sqlalchemy.SqlAlchemyAdapter import SQLAlchemyAdapter
-from functools import lru_cache
+# lru_cache removed: database_connect_args (dict) is not hashable
+_engine_cache = {}
 
 
-@lru_cache
 def create_relational_engine(
     db_path: str,
     db_name: str,
@@ -38,6 +38,10 @@ def create_relational_engine(
 
         Returns a SQLAlchemyAdapter instance for the specified database connection.
     """
+    cache_key = (db_path, db_name, db_host, db_port, db_username, db_password, db_provider)
+    if cache_key in _engine_cache:
+        return _engine_cache[cache_key]
+
     if db_provider == "sqlite":
         connection_string = f"sqlite+aiosqlite:///{db_path}/{db_name}"
 
@@ -61,4 +65,6 @@ def create_relational_engine(
                 "PostgreSQL dependencies are not installed. Please install with 'pip install cognee\"[postgres]\"' or 'pip install cognee\"[postgres-binary]\"' to use PostgreSQL functionality."
             )
 
-    return SQLAlchemyAdapter(connection_string, connect_args=database_connect_args)
+    engine = SQLAlchemyAdapter(connection_string, connect_args=database_connect_args)
+    _engine_cache[cache_key] = engine
+    return engine

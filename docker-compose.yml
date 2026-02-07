@@ -1,5 +1,7 @@
 services:
   cognee:
+    profiles:
+      - disabled
     container_name: cognee
     restart: always
     networks:
@@ -43,14 +45,13 @@ services:
       - ENVIRONMENT=local
       - LOG_LEVEL=INFO
       - TRANSPORT_MODE=http
-      - API_URL=http://cognee:8000
+      #- API_URL=http://cognee:8000  # DISABLED: use direct mode
       - MCP_LOG_LEVEL=INFO
       - PYTHONUNBUFFERED=1
+      - EXTRAS=anthropic
     extra_hosts:
       - "host.docker.internal:host-gateway"
     # No public ports - access via scassist MCP proxy only
-    depends_on:
-      - cognee
 
   # NOTE: Frontend is a work in progress and supports minimum amount of features required to be functional.
   # If you want to use Cognee with a UI environment you can integrate the Cognee MCP Server into Cursor / Claude Desktop / Visual Studio Code (through Cline/Roo)
